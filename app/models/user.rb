@@ -1,4 +1,5 @@
-class User < ApplicationRecord
+class User <
+	#has_many :articles
 	validates :username,
 	          presence:   true,
 	          uniqueness: { case_sensitive: false },
