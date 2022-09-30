@@ -1,0 +1,16 @@
+.container
+  .row.justify-content-center
+    .col-10
+      = render 'shared/errors', obj: @article
+      = form_with(model: @article, class: "shadow p-3 mb-3 bg-secondary rounded", local: true) do |f|
+        .form-group.pt-2.row
+          = f.label :title, class: "col-2 col-form-label text-light"
+          .col-10
+            = f.text_field :title, class: "form-control shadow rounded", placeholder: "Title of article"
+        .form-group.pt-2.row
+          = f.label :description, class: "col-2 col-form-label text-light"
+          .col-10
+            = f.text_area :description, rows: 5, class: "form-control shadow rounded", placeholder: "Description of article"
+        .form-group.pt-2.d-flex.justify-content-center
+          = f.submit class:"btn btn-outline-light btn-lg"
+    = link_to '[ Cancel & Return to Articles ]', articles_path, class:" d-flex justify-content-center pt-1 text-info"
