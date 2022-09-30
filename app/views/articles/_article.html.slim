@@ -1,0 +1,19 @@
+.container
+  - @articles.each do |article|
+    .row.justify-content-md-center
+      .col-8.pt-3
+        .card.text-center.shadow.mb-5.bg-white.rounded
+          .card-header.font-italic
+            - if article.user
+              = link_to article.user.username, user_path(article.user)
+          .card-body
+            h5.card-title= link_to article.title, article_path(article), class: "text-success"
+            p.card-text= truncate(article.description, length: 100 )
+            = link_to 'Show', article_path(article), class: "btn btn-outline-success mx-2"
+            = link_to 'Edit', edit_article_path(article),class:"btn btn-outline-info mx-2"
+            = link_to 'Delete', article_path(article),class:"btn btn-outline-danger mx-2", method: :delete,data: {confirm: "Are you sure to delete this article?"}
+          .card-footer.text-muted
+            small
+              | Created #{time_ago_in_words(article.created_at)}
+            | ago,
+            | edited #{time_ago_in_words(article.updated_at)} ago
